@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Configure Room 1</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="sb-admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="sb-admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="sb-admin/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="sb-admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Color Picker -->
+    <link href="colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Notifications</a>
+        </div>
+        <!-- /.navbar-header -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Notifications</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-files-o fa-fw"></i> Configure<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                            <li>
+                                <a href="room1.html">Room 1</a>
+                            </li>
+                            <li>
+                                <a href="room2.html">Room 2</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Configure Room Notification Settings</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-push-3 col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Room 1
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form role="form">
+                                    <input type="button" class="btn btn-default loadData" value="Load Data" />
+                                    <input type="button" class="btn btn-default saveData" value="Save Data" />
+                                    <div class="form-group">
+                                        <label for="roomname">Name of Room</label>
+                                        <input id="roomname" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="macaddress">MAC Address</label>
+                                        <input id="macaddress" maxlength="17" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group color1">
+                                            <label for="color1">Blink Color 1</label>
+                                            <input id="color1" type="text" value="" class="form-control" />
+                                            <span class="input-group-addon"><i></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group color2">
+                                            <label for="color2">Blink Color 2</label>
+                                            <input id="color2" type="text" value="" class="form-control" />
+                                            <span class="input-group-addon"><i></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sound Notifications</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="sound" id="optionsRadios1" value="railroad.mp3" checked>Railroad
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="sound" id="optionsRadios2" value="doorbell.mp3">Doorbell
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="sound" id="optionsRadios3" value="store_door_chime.mp3">Door Chime
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="sound" id="optionsRadios4" value="glass_ping.mp3">Glass Ping
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <input type="button" class="btn btn-default loadData" value="Load Data" />
+                                    <input type="button" class="btn btn-default saveData" value="Save Data" />
+                                </form>
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="sb-admin/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- color picker -->
+<script src="colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="sb-admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="sb-admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="sb-admin/dist/js/sb-admin-2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.color1').colorpicker();
+        $('.color2').colorpicker();
+
+        var socket = io.connect('http://192.168.0.19:8080');
+
+        socket.emit('getRoomOneConfig', {msg: "please send"});
+
+        socket.on('sendRoomOneConfig', function(data){
+            console.log(data);
+        });
+
+        socket.on('handshake', function(data){
+
+        });
+        // mac address string formatting
+        var macAddress = document.getElementById("macaddress");
+        function formatMAC(e) {
+            var r = /([a-f0-9]{2})([a-f0-9]{2})/i,
+                    str = e.target.value.replace(/[^a-f0-9]/ig, "");
+
+            while (r.test(str)) {
+                str = str.replace(r, '$1' + ':' + '$2');
+            }
+
+            e.target.value = str.slice(0, 17);
+        }
+
+        macAddress.addEventListener("keyup", formatMAC, false);
+        // mac address string formatting
+
+        $('#submit').on('click', function(){
+            // building JSON
+            var config = {};
+
+            config.name = $('#roomname').val();
+            config.macaddress = $('#macaddress').val();
+            config.sound = $('#sound').val();
+            config.color1 = $('#color1').val();
+            config.color2 = $('#color2').val();
+            console.log(config);
+        });
+
+        $('.loadData').on('click', function(){
+            console.log("load data");
+            socket.emit('getRoomOneConfig', {msg: "please send"});
+        })
+    });
+</script>
+</body>
+</html>

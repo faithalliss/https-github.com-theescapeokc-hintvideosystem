@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <style>
+        .btn-huge{
+            padding-top:20px;
+            padding-bottom:20px;
+            font-size:24px;
+            line-height:1.3333333;
+            border-radius:6px
+        }
+
+        li{
+            font-size:18px;
+        }
+
+        li a{
+            color:black;
+            font-weight:bolder;
+        }
+        #roomOneTab{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li  role="presentation" class="active">
+                <a id="roomOneTab" style="background-color:orange;" href="#roomOneContent" aria-controls="roomOneContent" role="tab" data-toggle="tab">Conquered Embassy (1)</a>
+            </li>
+            <li role="presentation">
+                <a id="roomTwoTab" style="background-color:red;" href="#roomTwoContent" aria-controls="roomTwoContent" role="tab" data-toggle="tab">The Lost Antidote</a>
+            </li>
+            <li role="presentation">
+                <a id="roomThreeTab" style="background-color:blue;" href="#roomThreeContent" aria-controls="roomThreeContent" role="tab" data-toggle="tab">H'ordervous and Obituaries</a>
+            </li>
+            <li role="presentation">
+                <a id="roomFourTab" style="background-color:green;" href="#roomFourContent" aria-controls="roomFourContent" role="tab" data-toggle="tab">Conquered Embassy (2)</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="roomOneContent">
+                <div>
+                    <h1 id="roomOneTimer">Conquered Embassy (1)</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStart">Start Videos</button>
+                        <button type="button" class="btn btn-huge btn-block btn-primary" id="roomOneVideoStop">Stop</button>
+                    </div>
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning"  id="roomOneSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" disabled id="roomOnePlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomOneHistory">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="roomTwoContent">
+                <div>
+                    <h1 id="roomTwoTimer">Lost Antidote</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomTwoVideoStart">Start Videos</button>
+                        <button type="button" class="btn btn-huge btn-block btn-primary" id="roomTwoVideoStop">Stop</button>
+                    </div>
+                    <!--<div class="col-sm-4">-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-warning"  id="roomOneSubFourMin">-4 Minutes</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-danger" disabled id="roomOnePlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomOneHistory">-->
+                    <!--<ul>-->
+                    <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="roomThreeContent">
+                <div>
+                    <h1 id="roomThreeTimer">H'ordervous and Obituaries</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomThreeVideoStart">Start Video</button>
+                        <button type="button" class="btn btn-huge btn-block btn-primary" id="roomThreeVideoStop">Stop Video</button>
+                    </div>
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomThreeSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomThreeClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomThreeCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="roomFourContent">
+                <div>
+                    <h1 id="roomFourTimer">Conquered Embassy (2)</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomFourVideoStart">Start Video</button>
+                        <button type="button" class="btn btn-huge btn-block btn-primary" id="roomFourVideoStop">Stop Video</button>
+                    </div>
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomFourPlusFourMin">+4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomFourSubFourMin">-4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomFourCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <!--<div role="tabpanel" class="tab-pane" id="roomFiveContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomFiveTimer">RoomFive Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFiveVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomFivePlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomFiveSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomFiveClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomFiveCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="roomSixContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomSixTimer">RoomSix Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomSixVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomSixPlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomSixSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomSixClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomSixCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        var roomOne = {
+            tab: $('#roomOneTab'),
+            content:$('#roomOneContent'),
+            timer:$('#roomOneTimer'),
+            videoStart:$('#roomOneVideoStart'),
+            videoStop:$('#roomOneVideoStop'),
+            name: 'Conquered Embassy (1)',
+            color: 'orange',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomOne.tab.text(roomOne.name);
+
+        var roomTwo = {
+            tab: $('#roomTwoTab'),
+            content:$('#roomTwoContent'),
+            timer:$('#roomTwoTimer'),
+            videoRules:$('#roomTwoRulesVideo'),
+            videoStory:$('#roomTwoStoryVideo'),
+            videoStart:$('#roomTwoVideoStart'),
+            videoStop:$('#roomTwoVideoStop'),
+            name: 'Lost Antidote',
+            color: 'yellow',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomTwo.tab.text(roomTwo.name);
+
+        var roomThree = {
+            tab: $('#roomThreeTab'),
+            content:$('#roomThreeContent'),
+            timer:$('#roomThreeTimer'),
+            videoStart:$('#roomThreeVideoStart'),
+            videoStop:$('#roomThreeVideoStop'),
+            name: 'H\'ordervous and Obituaries',
+            color: 'blue',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomThree.tab.text(roomThree.name);
+
+        var roomFour = {
+            tab: $('#roomFourTab'),
+            content:$('#roomFourContent'),
+            timer:$('#roomFourTimer'),
+            videoStart:$('#roomFourVideoStart'),
+            videoStop:$('#roomFourVideoStop'),
+            name: 'Conquered Embassy (2)',
+            color: 'red',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        var socket = io.connect('http://192.168.0.50:8080');
+        socket.on("connect", function(){
+            console.log("connected");
+        });
+//        console.log('318');
+//        socket.emit('getRoomOneConfig');
+//
+//        socket.on('sendRoomOneConfig', function(data){
+//            console.log("called");
+//        });
+
+        ///////////////////////////// ROOM ONE /////////////////////////////
+//        roomOne.tab.text(roomOne.name);
+
+        socket.on('btnRoomOne', function(){
+            enableRoom(roomOne);
+            console.log("enable room one");
+        });
+        socket.on('disableRoomOne',function(){
+            disableRoom(roomOne);
+        });
+        roomOne.tab.on('click', function(){
+            if(roomOne.toggle) {
+                socket.emit('roomOneClicked');
+            }
+        });
+
+        roomOne.videoStart.on('click', function(){
+            console.log("start video button clicked");
+            $.ajax( "http://192.168.0.101:3000/play_rules" );
+        });
+
+        roomOne.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.0.101:3000/stop");
+        });
+
+
+        ///////////////////////////// ROOM TWO /////////////////////////////
+        roomTwo.tab.text(roomTwo.name);
+
+        socket.on('btnRoomTwo', function(){
+            enableRoom(roomTwo);
+        });
+
+        socket.on('disableRoomTwo',function(){
+            disableRoom(roomTwo);
+        });
+
+        roomTwo.tab.on('click', function(){
+            if(roomTwo.toggle) {
+                socket.emit('roomTwoClicked');
+            }
+        });
+
+        roomTwo.videoStart.on('click', function(){
+            console.log("start video button clicked");
+            $.ajax( "http://192.168.0.102:3000/play_rules" );
+        });
+
+        roomTwo.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.0.102:3000/stop");
+        });
+
+        ///////////////////////////// ROOM THREE /////////////////////////////
+        roomThree.tab.text(roomThree.name);
+
+        socket.on('btnRoomThree', function(){
+            enableRoom(roomThree);
+        });
+        socket.on('disableRoomThree',function(){
+            disableRoom(roomThree);
+        });
+        roomThree.tab.on('click', function(){
+            if(roomThree.toggle) {
+                socket.emit('roomThreeClicked');
+            }
+        });
+
+        roomThree.videoStart.on('click', function(){
+            console.log("start video button clicked");
+            $.ajax( "http://192.168.0.103:3000/play_rules" );
+        });
+
+        roomThree.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.0.103:3000/stop");
+        });
+
+        ///////////////////////////// ROOM FOUR /////////////////////////////
+        roomFour.tab.text(roomFour.name);
+        socket.on('btnRoomFour', function(){
+            enableRoom(roomFour);
+        });
+        socket.on('disableRoomFour',function(){
+            disableRoom(roomFour);
+        });
+        roomFour.tab.on('click', function(){
+            if(roomFour.toggle) {
+                socket.emit('roomFourClicked');
+            }
+        });
+
+        roomFour.videoStart.on('click', function(){
+            console.log("start video button clicked");
+            $.ajax( "http://192.168.0.104:3000/play_rules" );
+        });
+
+        roomFour.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.0.104:3000/stop");
+        });
+
+        ///////////////////////////// FUNCTIONS /////////////////////////////
+
+        function disableRoom(room){
+            room.tab.css("background-color", room.color);
+            room.toggle = false;
+            clearInterval(room.interval);
+        }
+
+        function enableRoom(room){
+            console.log("inside enableRoom with :" + room);
+            var flash = false;
+            if(!room.toggle) {
+                room.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        room.tab.css("background-color", room.color);
+                    } else {
+                        room.tab.css('background-color', 'white');
+                    }
+                }, 200);
+                room.audio.play();
+                room.toggle = true;
+            }
+        }
+    });
+</script>
+</html>

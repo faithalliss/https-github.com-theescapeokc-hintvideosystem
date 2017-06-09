@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notification System</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Bootstrap Core CSS -->
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
+<link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<!-- Timeline CSS -->
+<link href="dist/css/timeline.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="dist/css/sb-admin-2.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div id="roomOne" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405</div>
+<div id="roomTwo" class="col-sm-4" style="border: 2px solid black; background-color:yellow; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Lost Antidote</div>
+<div id="roomThree" class="col-sm-4" style="border: 2px solid black; background-color:green; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">H'ordervous and Obituaries</div>
+<div id="roomFour" class="col-sm-4" style="border: 2px solid black; background-color:red; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Last Illusion</div>
+</div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script>
+$(document).ready(function(){
+
+  var roomOne = {
+    selector: $('#roomOne'),
+toggle: false,
+interval: null
+};
+var roomTwo = {
+  selector: $('#roomTwo'),
+toggle: false,
+interval: null
+};
+var roomThree = {
+  selector: $('#roomThree'),
+toggle: false,
+interval: null
+};
+var roomFour = {
+  selector: $('#roomFour'),
+toggle: false,
+interval: null
+};
+//var roomFive = {
+//  selector: $('#roomFive'),
+//toggle: false,
+//interval: null
+//};
+//var roomSix = {
+//  selector: $('#roomSix'),
+//toggle: false,
+//interval: null
+//};
+
+var socket = io.connect('http://dev-hs-cc:8080');
+
+//        socket.on('btnRoomThree', function(data){
+//            if(!roomThree.toggle) {
+//                var flash = false;
+//                var audio = new Audio('sounds/doorbell.mp3');
+//
+//                roomThree.interval = setInterval(function () {
+//                    if (flash = !flash) {
+//                        roomThree.selector.css("background-color", 'orange');
+//                    } else {
+//                        roomThree.selector.css('background-color', 'white');
+//                    }
+//                }, 200);
+//                audio.play();
+//                roomThree.toggle = true;
+//            }
+//            console.log(data);
+//        });
+//
+//        socket.on('btnRoomFour', function(data){
+//            if(!roomFour.toggle) {
+//                var flash = false;
+//                var audio = new Audio('sounds/doorbell.mp3');
+//
+//                roomFour.interval = setInterval(function () {
+//                    if (flash = !flash) {
+//                        roomFour.selector.css("background-color", 'orange');
+//                    } else {
+//                        roomFour.selector.css('background-color', 'white');
+//                    }
+//                }, 200);
+//                audio.play();
+//                roomFour.toggle = true;
+//            }
+//            console.log(data);
+//        });
+//
+//        socket.on('btnRoomFive', function(data){
+//            if(!roomFive.toggle) {
+//                var flash = false;
+//                var audio = new Audio('sounds/doorbell.mp3');
+//
+//                roomFive.interval = setInterval(function () {
+//                    if (flash = !flash) {
+//                        roomFive.selector.css("background-color", 'orange');
+//                    } else {
+//                        roomFive.selector.css('background-color', 'white');
+//                    }
+//                }, 200);
+//                audio.play();
+//                roomFive.toggle = true;
+//            }
+//            console.log(data);
+//        });
+//
+//        socket.on('btnRoomSix', function(data){
+//            if(!roomSix.toggle) {
+//                var flash = false;
+//                var audio = new Audio('sounds/doorbell.mp3');
+//
+//                roomSix.interval = setInterval(function () {
+//                    if (flash = !flash) {
+//                        roomSix.selector.css("background-color", 'orange');
+//                    } else {
+//                        roomSix.selector.css('background-color', 'white');
+//                    }
+//                }, 200);
+//                audio.play();
+//                roomSix.toggle = true;
+//            }
+//            console.log(data);
+//        });
+
+        // Room One
+        socket.on('btnRoomOne', function(data){
+            if(!roomOne.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomOne.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomOne.selector.css("background-color", 'orange');
+                    } else {
+                        roomOne.selector.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                roomOne.toggle = true;
+            }
+            console.log(data);
+        });
+        roomOne.selector.on('click', function(){
+            if(roomOne.toggle) {
+                roomOne.selector.css("background-color", 'orange');
+                roomOne.toggle = false;
+                clearInterval(roomOne.interval);
+            }
+        });
+        // end room one
+        // Room Two
+        socket.on('btnRoomTwo', function(data){
+            if(!roomTwo.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomTwo.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomTwo.selector.css("background-color", 'yellow');
+                    } else {
+                        roomTwo.selector.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                roomTwo.toggle = true;
+            }
+            console.log(data);
+        });
+        roomTwo.selector.on('click', function(){
+            if(roomTwo.toggle) {
+                roomTwo.selector.css("background-color", 'yellow');
+                roomTwo.toggle = false;
+                clearInterval(roomTwo.interval);
+            }
+        });
+        // end room two
+        // Room Three
+        socket.on('btnRoomThree', function(data){
+            if(!roomThree.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomThree.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomThree.selector.css("background-color", 'green');
+                    } else {
+                        roomThree.selector.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                roomThree.toggle = true;
+            }
+            console.log(data);
+        });
+        roomThree.selector.on('click', function(){
+            if(roomThree.toggle) {
+                roomThree.selector.css("background-color", 'green');
+                roomThree.toggle = false;
+                clearInterval(roomThree.interval);
+            }
+        });
+        // end room three
+        // Room Four
+        socket.on('btnRoomFour', function(data){
+            if(!roomFour.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomFour.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomFour.selector.css("background-color", 'red');
+                    } else {
+                        roomFour.selector.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                roomFour.toggle = true;
+            }
+            console.log(data);
+        });
+        roomFour.selector.on('click', function(){
+            if(roomFour.toggle) {
+                roomFour.selector.css("background-color", 'red');
+                roomFour.toggle = false;
+                clearInterval(roomFour.interval);
+            }
+        });
+        // end room four
+        // Room Five
+        socket.on('btnRoomFive', function(data){
+            if(!roomFive.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomFive.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomFive.selector.css("background-color", 'white');
+                    } else {
+                        roomFive.selector.css('background-color', 'orange');
+                    }
+                }, 200);
+                audio.play();
+                roomFive.toggle = true;
+            }
+            console.log(data);
+        });
+        roomFive.selector.on('click', function(){
+            if(roomFive.toggle) {
+                roomFive.selector.css("background-color", 'white');
+                roomFive.toggle = false;
+                clearInterval(roomFive.interval);
+            }
+        });
+        // end room five
+        // Room Six
+        socket.on('btnRoomSix', function(data){
+            if(!roomSix.toggle) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomSix.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomSix.selector.css("background-color", 'lime');
+                    } else {
+                        roomSix.selector.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                roomSix.toggle = true;
+            }
+            console.log(data);
+        });
+        roomSix.selector.on('click', function(){
+            if(roomSix.toggle) {
+                roomSix.selector.css("background-color", 'lime');
+                roomSix.toggle = false;
+                clearInterval(roomSix.interval);
+            }
+        });
+        // end room five
+});
+</script>
+</html>

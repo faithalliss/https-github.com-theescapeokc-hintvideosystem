@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rPi Statuses</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <style>
+        .btn-huge{
+            padding-top:20px;
+            padding-bottom:20px;
+            font-size:24px;
+            line-height:1.3333333;
+            border-radius:6px
+        }
+
+        li{
+            font-size:18px;
+        }
+
+        li a{
+            color:black;
+            font-weight:bolder;
+        }
+        #roomOneTab{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+</div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+
+
+        var socket = io.connect('http://okc-hs-cc:8080');
+        socket.on("connect", function(){
+            console.log("connected");
+        });
+        ///////////////////////////// FUNCTIONS /////////////////////////////
+
+        function disableRoom(room){
+            room.tab.css("background-color", room.color);
+            room.toggle = false;
+            clearInterval(room.interval);
+        }
+
+        function enableRoom(room){
+            console.log("inside enableRoom with :" + room);
+            var flash = false;
+            if(!room.toggle) {
+                room.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        room.tab.css("background-color", room.color);
+                    } else {
+                        room.tab.css('background-color', 'white');
+                    }
+                }, 200);
+                room.audio.play();
+                room.toggle = true;
+            }
+        }
+    });
+</script>
+</html>

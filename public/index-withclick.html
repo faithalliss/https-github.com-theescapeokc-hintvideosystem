@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div id="roomOne" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405</div>
+        <div id="roomTwo" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Lost Antidote</div>
+        <div id="roomThree" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">H'ordervous and Obituaries</div>
+        <div id="roomFour" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Last Illusion</div>
+        <div id="roomFive" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">TBD</div>
+        <div id="roomSix" class="col-sm-4" style="border: 2px solid black; background-color:orange; height:250px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">TBD</div>
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var roomOneObj = $('#roomOne');
+        var roomTwoObj = $('#roomTwo');
+        var roomThreeObj = $('#roomThree');
+        var roomFourObj = $('#roomFour');
+        var roomFiveObj = $('#roomFive');
+        var roomSixObj = $('#roomSix');
+
+        var socket = io.connect('http://192.168.0.15:8080');
+
+        socket.on('btnRoomOne', function(data){
+            roomOneObj.click();
+            console.log(data);
+        });
+        socket.on('btnRoomTwo', function(data){
+            roomTwoObj.click();
+            console.log(data)
+        });
+        socket.on('btnRoomThree', function(data){
+            roomThreeObj.click();
+            console.log(data)
+        });
+        socket.on('btnRoomFour', function(data){
+            roomFourObj.click();
+            console.log(data)
+        });
+        socket.on('btnRoomFive', function(data){
+            roomFiveObj.click();
+            console.log(data)
+        });
+        socket.on('btnRoomSix', function(data){
+            roomSixObj.click();
+            console.log(data)
+        });
+
+        // Room One
+        var toggleRoomOne = false;
+        var roomOneInterval = null;
+        roomOneObj.on('click', function(){
+            if(!toggleRoomOne) {
+                var flash = false;
+                var audio = new Audio('sounds/doorbell.mp3');
+
+                roomOneInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomOneObj.css("background-color", 'orange');
+                    } else {
+                        roomOneObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomOne = true;
+            } else {
+                roomOneObj.css("background-color", 'orange');
+                toggleRoomOne = false;
+                clearInterval(roomOneInterval);
+            }
+        });
+        // end room one
+        // Room Two
+        var toggleRoomTwo = false;
+        var roomTwoInterval = null;
+        roomTwoObj.on('click', function(){
+            if(!toggleRoomTwo) {
+                var audio = new Audio('sounds/doorbell.mp3');
+                var flash = false;
+                roomTwoInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomTwoObj.css("background-color", 'orange');
+                    } else {
+                        roomTwoObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomTwo = true;
+            } else {
+                roomTwoObj.css("background-color", 'orange');
+                toggleRoomTwo = false;
+                clearInterval(roomTwoInterval);
+            }
+        });
+        // end room two
+        // Room Three
+        var toggleRoomThree = false;
+        var roomThreeInterval = null;
+        roomThreeObj.on('click', function(){
+            if(!toggleRoomThree) {
+                var audio = new Audio('sounds/doorbell.mp3');
+                var flash = false;
+                roomThreeInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomThreeObj.css("background-color", 'orange');
+                    } else {
+                        roomThreeObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomThree = true;
+            } else {
+                roomThreeObj.css("background-color", 'orange');
+                toggleRoomThree = false;
+                clearInterval(roomThreeInterval);
+            }
+        });
+        // end room three
+        // Room Four
+        var toggleRoomFour = false;
+        var roomFourInterval = null;
+        roomFourObj.on('click', function(){
+            if(!toggleRoomFour) {
+                var audio = new Audio('sounds/doorbell.mp3');
+                var flash = false;
+                roomFourInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomFourObj.css("background-color", 'orange');
+                    } else {
+                        roomFourObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomFour = true;
+            } else {
+                roomFourObj.css("background-color", 'orange');
+                toggleRoomFour = false;
+                clearInterval(roomFourInterval);
+            }
+        });
+        // end room four
+        // Room Five
+        var toggleRoomFive = false;
+        var roomFiveInterval = null;
+        roomFiveObj.on('click', function(){
+            if(!toggleRoomFive) {
+                var audio = new Audio('sounds/doorbell.mp3');
+                var flash = false;
+                roomFiveInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomFiveObj.css("background-color", 'orange');
+                    } else {
+                        roomFiveObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomFive = true;
+            } else {
+                roomFiveObj.css("background-color", 'orange');
+                toggleRoomFive = false;
+                clearInterval(roomFiveInterval);
+            }
+        });
+        // end room five
+        // Room Six
+        var toggleRoomSix = false;
+        var roomSixInterval = null;
+        roomSixObj.on('click', function(){
+            if(!toggleRoomSix) {
+                var audio = new Audio('sounds/doorbell.mp3');
+                var flash = false;
+                roomSixInterval = setInterval(function () {
+                    if (flash = !flash) {
+                        roomSixObj.css("background-color", 'orange');
+                    } else {
+                        roomSixObj.css('background-color', 'white');
+                    }
+                }, 200);
+                audio.play();
+                toggleRoomSix = true;
+            } else {
+                roomSixObj.css("background-color", 'orange');
+                toggleRoomSix = false;
+                clearInterval(roomSixInterval);
+            }
+        });
+        // end room five
+    });
+</script>
+</html>

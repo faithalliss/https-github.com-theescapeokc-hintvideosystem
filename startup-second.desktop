@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=START ME SECOND
+Terminal=false
+Name=BROWSER
+Exec=iceweasel %u
+Type=Application
+Icon=gnome-panel-launcher
+Name[en_US]=START ME SECOND

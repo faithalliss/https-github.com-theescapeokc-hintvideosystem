@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <style>
+        .btn-huge{
+            padding-top:20px;
+            padding-bottom:20px;
+            font-size:24px;
+            line-height:1.3333333;
+            border-radius:6px
+        }
+
+        li{
+            font-size:18px;
+        }
+
+        li a{
+            color:black;
+            font-weight:bolder;
+        }
+        #roomOneTab{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <!--<div class="row">-->
+        <!--<div id="roomOne" class="col-sm-6" style="border: 2px solid black; background-color:orange; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405</div>-->
+        <!--<div id="roomTwo" class="col-sm-6" style="border: 2px solid black; background-color:yellow; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Lost Antidote</div>-->
+        <!--<div id="roomThree" class="col-sm-6" style="border: 2px solid black; background-color:green; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">H'ordervous and Obituaries</div>-->
+        <!--<div id="roomFour" class="col-sm-6" style="border: 2px solid black; background-color:red; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Last Illusion</div>-->
+    <!--</div>-->
+
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li  role="presentation" class="active">
+                <a id="roomOneTab" style="background-color:orange;" href="#roomOneContent" aria-controls="roomOneContent" role="tab" data-toggle="tab">Submarine</a>
+            </li>
+            <!--<li role="presentation">-->
+                <!--<a id="roomTwoTab" style="background-color:red;" href="#roomTwoContent" aria-controls="roomTwoContent" role="tab" data-toggle="tab">The Lost Antidote</a>-->
+            <!--</li>-->
+            <!--<li role="presentation">-->
+                <!--<a id="roomThreeTab" style="background-color:blue;" href="#roomThreeContent" aria-controls="roomThreeContent" role="tab" data-toggle="tab">H'ordervous and Obituaries</a>-->
+            <!--</li>-->
+            <!--<li role="presentation">-->
+                <!--<a id="roomFourTab" style="background-color:green;" href="#roomFourContent" aria-controls="roomFourContent" role="tab" data-toggle="tab">The Last Illusion</a>-->
+            <!--</li>-->
+            <!--<li role="presentation">-->
+                <!--<a id="roomFiveTab" style="background-color:blueviolet;" href="#roomFiveContent" aria-controls="roomFiveContent" role="tab" data-toggle="tab">Conquered Embassy</a>-->
+            <!--</li>-->
+            <!--<li role="presentation">-->
+                <!--<a id="roomSixTab" style="background-color:yellow;" href="#roomSixContent" aria-controls="roomSixContent" role="tab" data-toggle="tab">Conquered Embassy</a>-->
+            <!--</li>-->
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="roomOneContent">
+                <!--<div>-->
+                    <!--<h1 id="roomOneTimer">Submarine Timer</h1>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStart">Start Video</button>
+                        <button type="button" class="btn btn-huge btn-block btn-danger" disabled id="roomOnePlusFourMin">+4 Minutes</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-huge btn-block btn-warning"  id="roomOneSubFourMin">-4 Minutes</button>
+                        <button type="button" class="btn btn-huge btn-block btn-primary" id="roomOneClearHistory">Stop</button>
+                    </div>
+                    <!--<div class="col-sm-4" id="roomOneHistory">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <!--<div role="tabpanel" class="tab-pane" id="roomTwoContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomTwoTimer">RoomTwo Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomTwoVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomTwoPlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomTwoSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomTwoClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomTwoHistory">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="roomThreeContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomThreeTimer">RoomThree Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomThreeVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomThreePlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomThreeSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomThreeClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomThreeCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="roomFourContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomFourTimer">RoomFour Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFourVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomFourPlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomFourSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomFourClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomFourCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="roomFiveContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomFiveTimer">RoomFive Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFiveVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomFivePlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomFiveSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomFiveClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomFiveCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="roomSixContent">-->
+                <!--<div>-->
+                    <!--<h1 id="roomSixTimer">RoomSix Timer</h1>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomSixVideoStart">Start Video</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-danger" id="roomSixPlusFourMin">+4 Minutes</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4">-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-warning" id="roomSixSubFourMin">-4 Minutes</button>-->
+                        <!--<button type="button" class="btn btn-huge btn-block btn-primary" id="roomSixClearHistory">Clear History</button>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4" id="roomSixCalledForHint">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        var roomOne = {
+            tab: $('#roomOneTab'),
+            content:$('#roomOneContent'),
+            timer:$('#roomOneTimer'),
+            videoStart:$('#roomOneVideoStart'),
+            penalty:$('#roomOneSubFourMin'),
+//            videoTimer:$('#roomOneVideoStart'),
+            clearHistory:$('#roomOneClearHistory'),
+            name: 'Submarine',
+            color: 'orange',
+            audio: new Audio('public/sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomOne.tab.text(roomOne.name);
+
+        var roomTwo = {
+            tab: $('#roomTwoTab'),
+            content:$('#roomTwoContent'),
+            timer:$('#roomTwoTimer'),
+            videoRules:$('#roomTwoRulesVideo'),
+            videoStory:$('#roomTwoStoryVideo'),
+            videoTimer:$('#roomTwoVideoStart'),
+            clearHistory:$('#roomTwoClearHistory'),
+            name: 'Area 405',
+            color: 'yellow',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomTwo.tab.text(roomTwo.name);
+
+        var roomThree = {
+            tab: $('#roomThreeTab'),
+            content:$('#roomThreeContent'),
+            timer:$('#roomThreeTimer'),
+            videoRules:$('#roomThreeRulesVideo'),
+            videoStory:$('#roomThreeStoryVideo'),
+            videoTimer:$('#roomThreeVideoStart'),
+            clearHistory:$('#roomThreeClearHistory'),
+            name: 'Area 405 (2)',
+            color: 'green',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomThree.tab.text(roomThree.name);
+
+        var roomFour = {
+            tab: $('#roomFourTab'),
+            content:$('#roomFourContent'),
+            timer:$('#roomFourTimer'),
+            videoRules:$('#roomFourRulesVideo'),
+            videoStory:$('#roomFourStoryVideo'),
+            videoTimer:$('#roomFourVideoStart'),
+            clearHistory:$('#roomFourClearHistoryp'),
+            name: 'The Last Illusion',
+            color: 'red',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+        var roomFive = {
+            tab: $('#roomFiveTab'),
+            content:$('#roomFiveContent'),
+            timer:$('#roomFiveTimer'),
+            videoRules:$('#roomFiveRulesVideo'),
+            videoStory:$('#roomFiveStoryVideo'),
+            videoTimer:$('#roomFiveVideoStart'),
+            clearHistory:$('#roomFiveClearHistory'),
+            name: 'H\'ordervous and Obituaries',
+            color: 'blue',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+        var roomSix = {
+            tab: $('#roomSixTab'),
+            content:$('#roomSixContent'),
+            timer:$('#roomSixTimer'),
+            videoRules:$('#roomSixRulesVideo'),
+            videoStory:$('#roomSixStoryVideo'),
+            videoTimer:$('#roomSixVideoStart'),
+            clearHistory:$('#roomSixClearHistory'),
+            name: 'Conquered Embassy',
+            color: 'purple',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        var socket = io.connect('http://172.24.1.1:8080');
+        socket.on("connect", function(){
+            console.log("connected");
+        });
+//        console.log('318');
+//        socket.emit('getRoomOneConfig');
+//
+//        socket.on('sendRoomOneConfig', function(data){
+//            console.log("called");
+//        });
+
+        ///////////////////////////// ROOM ONE /////////////////////////////
+//        roomOne.tab.text(roomOne.name);
+
+        socket.on('btnRoomOne', function(){
+            enableRoom(roomOne);
+            console.log("enable room one");
+        });
+        socket.on('disableRoomOne',function(){
+            disableRoom(roomOne);
+        });
+        roomOne.tab.on('click', function(){
+            if(roomOne.toggle) {
+                socket.emit('roomOneClicked');
+            }
+        });
+
+        roomOne.videoStart.on('click', function(){
+            console.log("start video button clicked");
+            $.ajax( "http://dev-vs:3000/play_rules" );
+        });
+
+        roomOne.clearHistory.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://dev-vs:3000/stop");
+        });
+
+        roomOne.penalty.on('click', function(){
+            console.log("advance 4 minute");
+            $.ajax( "http://dev-vs:3000/pause" )
+                .done(function() {
+                    console.log("paused");
+                    setTimeout(function() {
+                        $.ajax("http://dev-vs:3000/forwards")
+                            .done(function () {
+                                setTimeout(function() {
+                                    console.log("+30");
+                                    $.ajax("http://dev-vs:3000/forwards")
+                                        .done(function () {
+                                            setTimeout(function() {
+                                                console.log("+30");
+                                                $.ajax("http://dev-vs:3000/forwards")
+                                                    .done(function () {
+                                                        setTimeout(function() {
+                                                            console.log("+30");
+                                                            $.ajax("http://dev-vs:3000/forwards")
+                                                                .done(function () {
+                                                                    setTimeout(function() {
+                                                                        console.log("+30");
+                                                                        $.ajax("http://dev-vs:3000/forwards")
+                                                                            .done(function () {
+                                                                                setTimeout(function() {
+                                                                                    console.log("+30");
+                                                                                    $.ajax("http://dev-vs:3000/forwards")
+                                                                                        .done(function () {
+                                                                                            setTimeout(function() {
+                                                                                                console.log("+30");
+                                                                                                $.ajax("http://dev-vs:3000/forwards")
+                                                                                                    .done(function () {
+                                                                                                        setTimeout(function() {
+                                                                                                            console.log("+30");
+                                                                                                            $.ajax("http://dev-vs:3000/play")
+                                                                                                                .done(function () {
+
+                                                                                                                });
+                                                                                                        }, 50);
+                                                                                                    });
+                                                                                            }, 50);
+                                                                                        });
+                                                                                }, 50);
+                                                                            });
+                                                                    }, 50);
+                                                                });
+                                                        }, 50);
+                                                    });
+                                            }, 50);
+                                        });
+                                }, 50);
+                            });
+                    }, 50)
+                });
+        });
+
+        ///////////////////////////// ROOM TWO /////////////////////////////
+        roomTwo.tab.text(roomTwo.name);
+
+        socket.on('btnRoomTwo', function(){
+            enableRoom(roomTwo);
+        });
+
+        socket.on('disableRoomTwo',function(){
+            disableRoom(roomTwo);
+        });
+
+        roomTwo.tab.on('click', function(){
+            if(roomTwo.toggle) {
+                socket.emit('roomTwoClicked');
+            }
+        });
+        ///////////////////////////// ROOM THREE /////////////////////////////
+        roomThree.tab.text(roomThree.name);
+
+        socket.on('btnRoomThree', function(){
+            enableRoom(roomThree);
+        });
+        socket.on('disableRoomThree',function(){
+            disableRoom(roomThree);
+        });
+        roomThree.tab.on('click', function(){
+            if(roomThree.toggle) {
+                socket.emit('roomThreeClicked');
+            }
+        });
+        ///////////////////////////// ROOM FOUR /////////////////////////////
+        roomFour.tab.text(roomFour.name);
+        socket.on('btnRoomFour', function(){
+            enableRoom(roomFour);
+        });
+        socket.on('disableRoomFour',function(){
+            disableRoom(roomFour);
+        });
+        roomFour.tab.on('click', function(){
+            if(roomFour.toggle) {
+                socket.emit('roomFourClicked');
+            }
+        });
+        ///////////////////////////// ROOM FIVE /////////////////////////////
+        roomFive.tab.text(roomFive.name);
+        socket.on('btnRoomFive', function(){
+            enableRoom(roomFive);
+        });
+        socket.on('disableRoomFive',function(){
+            disableRoom(roomFive);
+        });
+        roomFive.tab.on('click', function(){
+            socket.emit('roomFiveClicked');
+        });
+        ///////////////////////////// ROOM SIX /////////////////////////////
+        roomSix.tab.text(roomSix.name);
+        socket.on('btnRoomSix', function(){
+            enableRoom(roomSix);
+        });
+        socket.on('disableRoomSix',function(){
+            disableRoom(roomSix);
+        });
+        roomSix.tab.on('click', function(){
+            socket.emit('roomSixClicked');
+        });
+        ///////////////////////////// FUNCTIONS /////////////////////////////
+
+        function disableRoom(room){
+            room.tab.css("background-color", room.color);
+            room.toggle = false;
+            clearInterval(room.interval);
+        }
+
+        function enableRoom(room){
+            console.log("inside enableRoom with :" + room);
+            var flash = false;
+            if(!room.toggle) {
+                room.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        room.tab.css("background-color", room.color);
+                    } else {
+                        room.tab.css('background-color', 'white');
+                    }
+                }, 200);
+                room.audio.play();
+                room.toggle = true;
+            }
+        }
+    });
+</script>
+</html>

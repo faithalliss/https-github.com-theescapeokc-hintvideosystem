@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <style>
+        .btn-huge{
+            padding-top:20px;
+            padding-bottom:20px;
+            font-size:24px;
+            line-height:1.3333333;
+            border-radius:6px
+        }
+
+        li{
+            font-size:18px;
+        }
+
+        li a{
+            color:black;
+            font-weight:bolder;
+        }
+        #roomOneTab{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <!--<div class="row">-->
+        <!--<div id="roomOne" class="col-sm-6" style="border: 2px solid black; background-color:orange; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405</div>-->
+        <!--<div id="roomTwo" class="col-sm-6" style="border: 2px solid black; background-color:yellow; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Lost Antidote</div>-->
+        <!--<div id="roomThree" class="col-sm-6" style="border: 2px solid black; background-color:green; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">H'ordervous and Obituaries</div>-->
+        <!--<div id="roomFour" class="col-sm-6" style="border: 2px solid black; background-color:red; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Last Illusion</div>-->
+    <!--</div>-->
+        <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li  role="presentation" class="active">
+            <a id="roomOneTab" style="background-color:orange;" href="#roomOneContent" aria-controls="roomOneContent" role="tab" data-toggle="tab">Area 405</a>
+        </li>
+        <li role="presentation">
+            <a id="roomTwoTab" style="background-color:red;" href="#roomTwoContent" aria-controls="roomTwoContent" role="tab" data-toggle="tab">The Lost Antidote</a>
+        </li>
+        <li role="presentation">
+            <a id="roomThreeTab" style="background-color:blue;" href="#roomThreeContent" aria-controls="roomThreeContent" role="tab" data-toggle="tab">H'ordervous and Obituaries</a>
+        </li>
+        <li role="presentation">
+            <a id="roomFourTab" style="background-color:green;" href="#roomFourContent" aria-controls="roomFourContent" role="tab" data-toggle="tab">The Last Illusion</a>
+        </li>
+        <li role="presentation">
+            <a id="roomFiveTab" style="background-color:blueviolet;" href="#roomFiveContent" aria-controls="roomFiveContent" role="tab" data-toggle="tab">Conquered Embassy</a>
+        </li>
+        <li role="presentation">
+            <a id="roomSixTab" style="background-color:yellow;" href="#roomSixContent" aria-controls="roomSixContent" role="tab" data-toggle="tab">Area 405 (2)</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="roomOneContent">
+            <div>
+                <h1 id="roomOneHeading">Area 405</h1>
+            </div>
+            <!--<div>-->
+                <!--<h1 id="roomOneTimer">Timer (coming soon)</h1>-->
+            <!--</div>-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomOneVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomOneVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomOneVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomOneHistory">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="roomTwoContent">
+            <div>
+                <h1 id="roomTwoHeading">Lost Antidote</h1>
+            </div>
+            <!--<div>-->
+                <!--<h1 id="roomTwoTimer">RoomTwo Timer</h1>-->
+            <!--</div>-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomTwoVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomTwoVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomTwoVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomTwoVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomTwoVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomTwoVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomTwoHistory">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="roomThreeContent">
+            <div>
+                <h1 id="roomThreeHeading">H'ordervous and Obituaries</h1>
+            </div>
+            <!--<div>-->
+                <!--<h1 id="roomThreeTimer">RoomThree Timer</h1>-->
+            <!--</div>-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomThreeVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomThreeVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomThreeVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomThreeVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomThreeVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomThreeVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomThreeCalledForHint">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="roomFourContent">
+            <div>
+                <h1 id="roomFourHeading">The Last Illusion</h1>
+            </div>
+            <!--<div>-->
+                <!--<h1 id="roomFourTimer">RoomFour Timer</h1>-->
+            <!--</div>-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomFourVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFourVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFourVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomFourVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomFourVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomFourVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomFourCalledForHint">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="roomFiveContent">
+            <div>
+                <h1 id="roomFiveHeading">Conquered Embassy</h1>
+            </div>
+            <!--<div>-->
+                <!--<h1 id="roomFiveTimer">RoomFive Timer</h1>-->
+            <!--</div>-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomFiveVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFiveVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomFiveVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomFiveVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomFiveVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomFiveVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomFiveCalledForHint">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="roomSixContent">
+            <div>
+                <h1 id="roomSixTimer">Area 405 (2)</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-success" id="roomSixVideoStartRules">Start @ Rules</button>
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomSixVideoStartStory">Start @ Story</button>-->
+                    <!--<button type="button" class="btn btn-huge btn-block btn-success" id="roomSixVideoStartTimer">Start @ Timer</button>-->
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-huge btn-block btn-warning" id="roomSixVideoPause">Pause</button>
+                    <button type="button" class="btn btn-huge btn-block btn-default" id="roomSixVideoResume">Resume</button>
+                    <button type="button" class="btn btn-huge btn-block btn-danger" id="roomSixVideoStop">Stop</button>
+                </div>
+                <!--<div class="col-sm-4" id="roomSixCalledForHint">-->
+                    <!--<ul>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        var roomOne = {
+            tab: $('#roomOneTab'),
+            content:$('#roomOneContent'),
+            timer:$('#roomOneTimer'),
+            videoStartStory:$('#roomOneVideoStartStory'),
+            videoStartRules:$('#roomOneVideoStartRules'),
+            videoStartTimer:$('#roomOneVideoStartTimer'),
+            videoResume:$('#roomOneVideoResume'),
+            videoPause:$('#roomOneVideoPause'),
+            videoStop:$('#roomOneVideoStop'),
+            clearHistory:$('#roomOneClearHistory'),
+            name: 'Area 405',
+            color: 'orange',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomOne.tab.text(roomOne.name);
+
+        var roomTwo = {
+            tab: $('#roomTwoTab'),
+            content:$('#roomTwoContent'),
+            timer:$('#roomTwoTimer'),
+            videoStartStory:$('#roomTwoVideoStartStory'),
+            videoStartRules:$('#roomTwoVideoStartRules'),
+            videoStartTimer:$('#roomTwoVideoStartTimer'),
+            videoResume:$('#roomTwoVideoResume'),
+            videoPause:$('#roomTwoVideoPause'),
+            videoStop:$('#roomTwoVideoStop'),
+            clearHistory:$('#roomTwoClearHistory'),
+            name: 'Lost Antidote',
+            color: 'yellow',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomTwo.tab.text(roomTwo.name);
+
+        var roomThree = {
+            tab: $('#roomThreeTab'),
+            content:$('#roomThreeContent'),
+            timer:$('#roomThreeTimer'),
+            videoStartStory:$('#roomThreeVideoStartStory'),
+            videoStartRules:$('#roomThreeVideoStartRules'),
+            videoStartTimer:$('#roomThreeVideoStartTimer'),
+            videoResume:$('#roomThreeVideoResume'),
+            videoPause:$('#roomThreeVideoPause'),
+            videoStop:$('#roomThreeVideoStop'),
+            clearHistory:$('#roomThreeClearHistory'),
+            name: 'H\'ordervous and Obituaries',
+            color: 'green',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        roomThree.tab.text(roomThree.name);
+
+        var roomFour = {
+            tab: $('#roomFourTab'),
+            content:$('#roomFourContent'),
+            timer:$('#roomFourTimer'),
+            videoStartStory:$('#roomFourVideoStartStory'),
+            videoStartRules:$('#roomFourVideoStartRules'),
+            videoStartTimer:$('#roomFourVideoStartTimer'),
+            videoResume:$('#roomFourVideoResume'),
+            videoPause:$('#roomFourVideoPause'),
+            videoStop:$('#roomFourVideoStop'),
+            clearHistory:$('#roomFourClearHistoryp'),
+            name: 'The Last Illusion',
+            color: 'red',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+        var roomFive = {
+            tab: $('#roomFiveTab'),
+            content:$('#roomFiveContent'),
+            timer:$('#roomFiveTimer'),
+            videoStartStory:$('#roomFiveVideoStartStory'),
+            videoStartRules:$('#roomFiveVideoStartRules'),
+            videoStartTimer:$('#roomFiveVideoStartTimer'),
+            videoResume:$('#roomFiveVideoResume'),
+            videoPause:$('#roomFiveVideoPause'),
+            videoStop:$('#roomFiveVideoStop'),
+            clearHistory:$('#roomFiveClearHistory'),
+            name: 'Conquered Embassy',
+            color: 'blue',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+        var roomSix = {
+            tab: $('#roomSixTab'),
+            content:$('#roomSixContent'),
+            timer:$('#roomSixTimer'),
+            videoStartStory:$('#roomSixVideoStartStory'),
+            videoStartRules:$('#roomSixVideoStartRules'),
+            videoStartTimer:$('#roomSixVideoStartTimer'),
+            videoResume:$('#roomSixVideoResume'),
+            videoPause:$('#roomSixVideoPause'),
+            videoStop:$('#roomSixVideoStop'),
+            clearHistory:$('#roomSixClearHistory'),
+            name: 'Area 405 (2)',
+            color: 'purple',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+
+        var socket = io.connect('http://okc-hs-cc:8080');
+        socket.on("connect", function(){
+            console.log("connected");
+        });
+
+        ///////////////////////////// ROOM ONE /////////////////////////////
+//        roomOne.tab.text(roomOne.name);
+
+        socket.on('btnRoomOne', function(){
+            enableRoom(roomOne);
+            console.log("enable room one");
+        });
+        socket.on('disableRoomOne',function(){
+            disableRoom(roomOne);
+        });
+        roomOne.tab.on('click', function(){
+            if(roomOne.toggle) {
+                socket.emit('roomOneClicked');
+            }
+        });
+
+        roomOne.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.51:3000/play_rules" );
+        });
+        roomOne.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.51:3000/play_story")
+        });
+        roomOne.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.51:3000/play_story")
+        });
+        roomOne.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.51:3000/pause");
+        });
+        roomOne.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.51:3000/resume");
+        });
+        roomOne.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.51:3000/stop");
+        });
+        ///////////////////////////// ROOM TWO /////////////////////////////
+        roomTwo.tab.text(roomTwo.name);
+
+        socket.on('btnRoomTwo', function(){
+            enableRoom(roomTwo);
+        });
+
+        socket.on('disableRoomTwo',function(){
+            disableRoom(roomTwo);
+        });
+
+        roomTwo.tab.on('click', function(){
+            if(roomTwo.toggle) {
+                socket.emit('roomTwoClicked');
+            }
+        });
+
+        roomTwo.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.52:3000/play_rules" );
+        });
+        roomTwo.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.52:3000/play_story")
+        });
+        roomTwo.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.52:3000/play_story")
+        });
+        roomTwo.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.52:3000/pause");
+        });
+        roomTwo.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.52:3000/resume");
+        });
+        roomTwo.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.52:3000/stop");
+        });
+        ///////////////////////////// ROOM THREE /////////////////////////////
+        roomThree.tab.text(roomThree.name);
+
+        socket.on('btnRoomThree', function(){
+            enableRoom(roomThree);
+        });
+        socket.on('disableRoomThree',function(){
+            disableRoom(roomThree);
+        });
+        roomThree.tab.on('click', function(){
+            if(roomThree.toggle) {
+                socket.emit('roomThreeClicked');
+            }
+        });
+
+        roomThree.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.53:3000/play_rules" );
+        });
+        roomThree.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.53:3000/play_story")
+        });
+        roomThree.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.53:3000/play_story")
+        });
+        roomThree.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.53:3000/pause");
+        });
+        roomThree.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.53:3000/resume");
+        });
+        roomThree.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.53:3000/stop");
+        });
+        ///////////////////////////// ROOM FOUR /////////////////////////////
+        roomFour.tab.text(roomFour.name);
+        socket.on('btnRoomFour', function(){
+            enableRoom(roomFour);
+        });
+        socket.on('disableRoomFour',function(){
+            disableRoom(roomFour);
+        });
+        roomFour.tab.on('click', function(){
+            if(roomFour.toggle) {
+                socket.emit('roomFourClicked');
+            }
+        });
+        roomFour.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.54:3000/play_rules" );
+        });
+        roomFour.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.54:3000/play_story")
+        });
+        roomFour.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.54:3000/play_story")
+        });
+        roomFour.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.54:3000/pause");
+        });
+        roomFour.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.54:3000/resume");
+        });
+        roomFour.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.54:3000/stop");
+        });
+        ///////////////////////////// ROOM FIVE /////////////////////////////
+        roomFive.tab.text(roomFive.name);
+        socket.on('btnRoomFive', function(){
+            enableRoom(roomFive);
+        });
+        socket.on('disableRoomFive',function(){
+            disableRoom(roomFive);
+        });
+        roomFive.tab.on('click', function(){
+            if(roomFive.toggle) {
+                socket.emit('roomFiveClicked');
+            }
+        });
+        roomFive.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.55:3000/play_rules" );
+        });
+        roomFive.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.55:3000/play_story")
+        });
+        roomFive.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.55:3000/play_story")
+        });
+        roomFive.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.55:3000/pause");
+        });
+        roomFive.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.55:3000/resume");
+        });
+        roomFive.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.55:3000/stop");
+        });
+        ///////////////////////////// ROOM SIX /////////////////////////////
+        roomSix.tab.text(roomSix.name);
+        socket.on('btnRoomSix', function(){
+            enableRoom(roomSix);
+        });
+        socket.on('disableRoomSix',function(){
+            disableRoom(roomSix);
+        });
+        roomSix.tab.on('click', function(){
+            if(roomSix.toggle) {
+                socket.emit('roomSixClicked');
+            }
+        });
+
+        roomSix.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://192.168.2.56:3000/play_rules" );
+        });
+        roomSix.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.56:3000/play_story")
+        });
+        roomSix.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://192.168.2.56:3000/play_story")
+        });
+        roomSix.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://192.168.2.56:3000/pause");
+        });
+        roomSix.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://192.168.2.56:3000/resume");
+        });
+        roomSix.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://192.168.2.56:3000/stop");
+        });
+        ///////////////////////////// FUNCTIONS /////////////////////////////
+
+        function disableRoom(room){
+            room.tab.css("background-color", room.color);
+            room.toggle = false;
+            clearInterval(room.interval);
+        }
+
+        function enableRoom(room){
+            console.log("inside enableRoom with :" + room);
+            var flash = false;
+            if(!room.toggle) {
+                room.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        room.tab.css("background-color", room.color);
+                    } else {
+                        room.tab.css('background-color', 'white');
+                    }
+                }, 200);
+                room.audio.play();
+                room.toggle = true;
+            }
+        }
+    });
+</script>
+</html>

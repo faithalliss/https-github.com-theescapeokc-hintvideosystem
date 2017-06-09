@@ -1,0 +1,20 @@
+{
+    "rmone": {
+        "MACAddress": "f0:27:2d:32:1f:ce"
+    },
+    "rmtwo": {
+        "MACAddress": "f0:27:2d:a8:60:d1"
+    },
+    "rmthree": {
+        "MACAddress": "74:c2:46:dd:40:ae"
+    },
+    "rmfour": {
+        "MACAddress": "f0:27:2d:47:60:e5"
+    },
+    "rmfive": {
+        "MACAddress": "f0:27:2d:85:44:40"
+    },
+    "rmsix": {
+        "MACAddress": "74:c2:46:34:b9:c7"
+    }
+}

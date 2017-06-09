@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification System (Submarine)</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Bootstrap Core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="dist/css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <style>
+        .btn-huge{
+            padding-top:20px;
+            padding-bottom:20px;
+            font-size:24px;
+            line-height:1.3333333;
+            border-radius:6px
+        }
+        li{
+            font-size:18px;
+        }
+        li a{
+            color:black;
+            font-weight:bolder;
+        }
+        #roomOneTab{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <!--<div class="row">-->
+        <!--<div id="roomOne" class="col-sm-6" style="border: 2px solid black; background-color:orange; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405</div>-->
+        <!--<div id="roomTwo" class="col-sm-6" style="border: 2px solid black; background-color:yellow; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Lost Antidote</div>-->
+        <!--<div id="roomThree" class="col-sm-6" style="border: 2px solid black; background-color:green; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">H'ordervous and Obituaries</div>-->
+        <!--<div id="roomFour" class="col-sm-6" style="border: 2px solid black; background-color:red; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">The Last Illusion</div>-->
+        <!--<div id="roomFive" class="col-sm-6" style="border: 2px solid black; background-color:blue; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Conquered Embassy</div>-->
+        <!--<div id="roomSix" class="col-sm-6" style="border: 2px solid black; background-color:orchid; height:300px; float:left; text-align:center; vertical-align:middle; padding-top:75px; font-size:24px;font-weight:bold">Area 405 (2)</div>-->
+    <!--</div>-->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li  role="presentation" class="active">
+                <a id="roomOneTab" style="background-color:orange;" href="#roomOneContent" aria-controls="roomOneContent" role="tab" data-toggle="tab">Submarine</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="roomOneContent">
+                <!--<div>-->
+                    <!--<h1 id="roomOneTimer">Submarine Timer</h1>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-huge btn-block btn-success" id="roomOneVideoStartRules">Start @ Rules</button>
+                        <button type="button" class="btn btn-huge btn-block btn-success" disabled id="roomOneVideoStartStory">Start @ Story</button>
+                        <button type="button" class="btn btn-huge btn-block btn-success" disabled id="roomOneVideoStartTimer">Start @ Timer</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-huge btn-block btn-warning" id="roomOneVideoPause">Pause</button>
+                        <button type="button" class="btn btn-huge btn-block btn-default" id="roomOneVideoResume">Resume</button>
+                        <button type="button" class="btn btn-huge btn-block btn-danger" id="roomOneVideoStop">Stop</button>
+                    </div>
+                    <!--<div class="col-sm-4" id="roomOneHistory">-->
+                        <!--<ul>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                            <!--<li>Fri, 16 Sep 2016 06:38:12</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/socket.io.js"></script>
+<script src="js/jquery-2.2.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var roomOne = {
+            tab: $('#roomOneTab'),
+            content:$('#roomOneContent'),
+            timer:$('#roomOneTimer'),
+            videoStartStory:$('#roomOneVideoStartStory'),
+            videoStartRules:$('#roomOneVideoStartRules'),
+            videoStartTimer:$('#roomOneVideoStartTimer'),
+            videoResume:$('#roomOneVideoResume'),
+            videoPause:$('#roomOneVideoPause'),
+            videoStop:$('#roomOneVideoStop'),
+            clearHistory:$('#roomOneClearHistory'),
+            name: 'Submarine',
+            color: 'orange',
+            audio: new Audio('sounds/doorbell.mp3'),
+            toggle: false,
+            interval: null
+        };
+        roomOne.tab.text(roomOne.name);
+        var socket = io.connect('http://172.24.1.1:8080');
+        socket.on("connect", function(){
+            console.log("connected");
+        });
+        ///////////////////////////// ROOM ONE /////////////////////////////
+        socket.on('btnRoomOne', function(){
+            enableRoom(roomOne);
+            console.log("enable room one");
+        });
+        socket.on('disableRoomOne',function(){
+            disableRoom(roomOne);
+        });
+        roomOne.tab.on('click', function(){
+            if(roomOne.toggle) {
+                socket.emit('roomOneClicked');
+            }
+        });
+        roomOne.videoStartRules.on('click', function(){
+            console.log("start rules button clicked");
+            $.ajax( "http://172.24.1.86:3000/play_rules" );
+        });
+        roomOne.videoStartStory.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://172.24.1.86:3000/play_story")
+        });
+        roomOne.videoStartTimer.on('click', function(){
+            console.log("start story button clicked");
+            $.ajax("http://172.24.1.86:3000/play_story")
+        });
+        roomOne.videoPause.on('click', function(){
+            console.log("pause video");
+            $.ajax("http://172.24.1.86:3000/pause");
+        });
+        roomOne.videoResume.on('click', function(){
+            console.log("Resume video");
+            $.ajax("http://172.24.1.86:3000/resume");
+        });
+        roomOne.videoStop.on('click', function(){
+            console.log("stopping video");
+            $.ajax("http://172.24.1.86:3000/stop");
+        });
+        ///////////////////////////// FUNCTIONS /////////////////////////////
+        function disableRoom(room){
+            room.tab.css("background-color", room.color);
+            room.toggle = false;
+            clearInterval(room.interval);
+        }
+        function enableRoom(room){
+            console.log("inside enableRoom with :" + room);
+            var flash = false;
+            if(!room.toggle) {
+                room.interval = setInterval(function () {
+                    if (flash = !flash) {
+                        room.tab.css("background-color", room.color);
+                    } else {
+                        room.tab.css('background-color', 'white');
+                    }
+                }, 200);
+                room.audio.play();
+                room.toggle = true;
+            }
+        }
+    });
+</script>
+</html>

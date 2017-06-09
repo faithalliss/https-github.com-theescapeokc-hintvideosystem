@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Start me First
+Terminal=true
+Name=START ME FIRST
+Exec=/home/pi/Startup/RUN_ME_FIRST.sh
+Type=Application
+Icon=gnome-panel-launcher
